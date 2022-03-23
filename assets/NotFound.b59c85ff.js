@@ -1,0 +1,1 @@
+import{R as e}from"./vendor.5b22622a.js";var o="/Users/indeex/Documents/program/indeex/program/webGPU/wgsl-base/src/pages/NotFound.tsx";const s=()=>e.createElement("div",{__self:globalThis,__source:{fileName:o,lineNumber:2,columnNumber:12}},"not found 404 page");export{s as default};
