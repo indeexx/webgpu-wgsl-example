@@ -1,4 +1,4 @@
-var y=Object.defineProperty;var U=(o,e,r)=>e in o?y(o,e,{enumerable:!0,configurable:!0,writable:!0,value:r}):o[e]=r;var i=(o,e,r)=>(U(o,typeof e!="symbol"?e+"":e,r),r);import{U as f,_ as M,R as w}from"./vendor.5b22622a.js";/* empty css              */import{c as h,p as V,t as D,f as b,r as A,m as C}from"./vec3.a41d3eaa.js";const R="_part_pfhqm_1",G="_card_pfhqm_1",S="_footer_pfhqm_4";var N={part:R,card:G,footer:S},O=`struct Uniforms {
+var y=Object.defineProperty;var U=(o,e,r)=>e in o?y(o,e,{enumerable:!0,configurable:!0,writable:!0,value:r}):o[e]=r;var i=(o,e,r)=>(U(o,typeof e!="symbol"?e+"":e,r),r);import{U as f,_ as M,R as w}from"./vendor.5b22622a.js";/* empty css              */import{c as h,p as V,t as D,f as b,r as A,m as C}from"./vec3.d4a804b7.js";const R="_part_pfhqm_1",G="_card_pfhqm_1",S="_footer_pfhqm_4";var N={part:R,card:G,footer:S},O=`struct Uniforms {
   modelViewProjectionMatrix : mat4x4<f32>;
 };
 @binding(0) @group(0) var<uniform> uniforms : Uniforms;

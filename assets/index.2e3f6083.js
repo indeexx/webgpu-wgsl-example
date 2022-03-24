@@ -1,4 +1,4 @@
-var G=Object.defineProperty;var U=(r,t,e)=>t in r?G(r,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):r[t]=e;var i=(r,t,e)=>(U(r,typeof t!="symbol"?t+"":t,e),e);import{U as h,_ as D,R as w}from"./vendor.5b22622a.js";/* empty css              */import{c as u,p as A,t as m,f,r as P,m as d}from"./vec3.a41d3eaa.js";const C="_part_pfhqm_1",T="_card_pfhqm_1",z="_footer_pfhqm_4";var R={part:C,card:T,footer:z},O=`struct Uniforms {
+var G=Object.defineProperty;var U=(r,t,e)=>t in r?G(r,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):r[t]=e;var i=(r,t,e)=>(U(r,typeof t!="symbol"?t+"":t,e),e);import{U as h,_ as D,R as w}from"./vendor.5b22622a.js";/* empty css              */import{c as u,p as A,t as m,f,r as P,m as d}from"./vec3.d4a804b7.js";const C="_part_pfhqm_1",T="_card_pfhqm_1",z="_footer_pfhqm_4";var R={part:C,card:T,footer:z},O=`struct Uniforms {
   modelViewProjectionMatrix : mat4x4<f32>;
 };
 @binding(0) @group(0) var<uniform> uniforms : Uniforms;

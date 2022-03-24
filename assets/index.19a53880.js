@@ -1,4 +1,4 @@
-var T=Object.defineProperty;var A=(s,e,r)=>e in s?T(s,e,{enumerable:!0,configurable:!0,writable:!0,value:r}):s[e]=r;var t=(s,e,r)=>(A(s,typeof e!="symbol"?e+"":e,r),r);import{U as g,_ as B,R as E}from"./vendor.5b22622a.js";import{c as m,t as D,f as w,g as V,h as z,i as C,m as _,l as O,p as U}from"./vec3.a41d3eaa.js";/* empty css              */let a;function R(s){a=s}var X=`@stage(fragment)
+var T=Object.defineProperty;var A=(s,e,r)=>e in s?T(s,e,{enumerable:!0,configurable:!0,writable:!0,value:r}):s[e]=r;var t=(s,e,r)=>(A(s,typeof e!="symbol"?e+"":e,r),r);import{U as g,_ as B,R as E}from"./vendor.5b22622a.js";import{c as m,t as D,f as w,g as V,h as z,i as C,m as _,l as O,p as U}from"./vec3.d4a804b7.js";/* empty css              */let a;function R(s){a=s}var X=`@stage(fragment)
   fn main(@location(0) fragColor : vec4<f32>) -> @location(0) vec4<f32> {
     return fragColor;
   }`,Y=`struct Uniforms {

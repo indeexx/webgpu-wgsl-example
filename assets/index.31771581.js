@@ -1,4 +1,4 @@
-var K=Object.defineProperty;var Q=(s,t,e)=>t in s?K(s,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):s[t]=e;var r=(s,t,e)=>(Q(s,typeof t!="symbol"?t+"":t,e),e);import{U as B,_ as Z,R as A}from"./vendor.5b22622a.js";/* empty css              */import{s as L,a as G,n as _,b as e1,d as D,f as p,c as h,p as t1,l as U,o as i1,m as V,t as O,e as r1}from"./vec3.a41d3eaa.js";const n1="_part_pfhqm_1",o1="_card_pfhqm_1",s1="_footer_pfhqm_4";var a1={part:n1,card:o1,footer:s1},c1=`struct Scene {
+var K=Object.defineProperty;var Q=(s,t,e)=>t in s?K(s,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):s[t]=e;var r=(s,t,e)=>(Q(s,typeof t!="symbol"?t+"":t,e),e);import{U as B,_ as Z,R as A}from"./vendor.5b22622a.js";/* empty css              */import{s as L,a as G,n as _,b as e1,d as D,f as p,c as h,p as t1,l as U,o as i1,m as V,t as O,e as r1}from"./vec3.d4a804b7.js";const n1="_part_pfhqm_1",o1="_card_pfhqm_1",s1="_footer_pfhqm_4";var a1={part:n1,card:o1,footer:s1},c1=`struct Scene {
   lightViewProjMatrix : mat4x4<f32>;
   cameraViewProjMatrix : mat4x4<f32>;
   lightPos : vec3<f32>;
