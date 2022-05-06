@@ -1,0 +1,35 @@
+import{_ as O,R as I}from"./vendor.5b22622a.js";import{c as N,l as J,i as K,p as Q,b as Z,a as $}from"./mat4.2a33baad.js";const ee="_part_szvhm_1",te="_card_szvhm_1",re="_footer_szvhm_4",ae="_progress_szvhm_7",oe="_gfx_szvhm_1";var S={part:ee,card:te,footer:re,progress:ae,gfx:oe};const ne=a=>{var B=0,p=0,L=0;let z=40*Math.PI/180;async function X(c){if(!c)throw new Error("data error\uFF1A"+c);let d=c.trim()+`
+`;d.indexOf(`
+`,0);let o=[1],x=[1],v=[1],_=[],T=[],e=[],m=[],g=0,E=d.split(`
+`);for(let b=0;b<E.length;b++){let i=E[b];i=i.trim().replace(/\s+/g," ");let t=i.split(" ");const f=t[0];if(f==="v")t.shift(),t=t.map(parseFloat),o.push(t);else if(f==="vt")t.shift(),t=t.map(parseFloat),t[2]=0,x.push(t.slice(0,2));else if(f==="vn")t.shift(),t=t.map(parseFloat),v.push(t);else if(f==="f"){t.shift();for(let h=0;h<t.length-2;h++)for(let u=0;u<3;u++){let w=t[u+h];u==2&&(u=t.length-1,w=t[u]);let r=w.split("/");for(let n=0;n<3;n++)r[0]<0&&(r[0]=o.length+1+parseInt(r[0])),r[1]<0&&(r[1]=x.length+1+parseInt(r[1])),r[2]<0&&(r[2]=v.length+1+parseInt(r[2]));for(let n=0;n<r.length;n++)switch(n){case 0:_.push(o[r[0]]);break;case 1:T.push(x[r[1]]);break;case 2:e.push(v[r[2]]);break}m.push(g),g++}}}return{vertex:_,uv:T,normals:e,faces:m}}function q(c,d){var o=new XMLHttpRequest;o.open("GET",d,!1),o.onload=function(){o.status!=200?alert("LOAD"+o.status+": "+o.statusText):c.mesh=o.responseText},o.send()}async function Y(){const c={vertex:`
+          struct Uniform {
+           pMatrix : mat4x4<f32>;
+           vMatrix : mat4x4<f32>;
+           mMatrix : mat4x4<f32>;
+          };
+          @binding(0) @group(0) var<uniform> uniforms : Uniform;
+             
+          struct Output {
+              @builtin(position) Position : vec4<f32>;
+              @location(0) vUV : vec2<f32>;
+          };
+    
+          @stage(vertex)
+            fn main(@location(0) pos: vec4<f32>, @location(1) uv: vec2<f32>) -> Output {
+               
+                var output: Output;
+                output.Position = uniforms.pMatrix * uniforms.vMatrix * uniforms.mMatrix * pos;
+                output.vUV = 1.0 - uv;
+    
+                return output;
+            }
+        `,fragment:`
+          @binding(1) @group(0) var textureSampler : sampler;
+          @binding(2) @group(0) var textureData : texture_2d<f32>;
+    
+          @stage(fragment)
+          fn main(@location(0) vUV: vec2<f32>) -> @location(0) vec4<f32> {
+          let textureColor:vec3<f32> = (textureSample(textureData, textureSampler, vUV)).rgb;
+          return vec4<f32>(textureColor, 1.0);
+        }
+        `};let d={};document.getElementById("progress").innerText="\u6A21\u578B\u52A0\u8F7D\u4E2D...",await q(d,"https://hungking.cc/assets/models/webgpu_base_part11/Frog_v1_L3.obj");let o=await X(d.mesh);document.getElementById("progress").innerText="\u6A21\u578B\u6E32\u67D3\u4E2D...";const x=new Float32Array(o.vertex.flat()),v=new Float32Array(o.uv.flat()),_=new Uint32Array(o.faces.flat());a.width=document.body.clientWidth,a.height=document.body.clientHeight;const T=await navigator.gpu.requestAdapter(),e=await T.requestDevice(),m=a.getContext("webgpu"),g=window.devicePixelRatio||1,E=[a.clientWidth*g,a.clientHeight*g],b=m.getPreferredFormat(T);m.configure({device:e,format:b,size:E,compositingAlphaMode:"opaque"});let i=N(),t=N(),f=N();J(t,[10,10,10],[0,0,0],[-30,-10,-10]),K(f),Q(f,z,a.width/a.height,1,25);const h=e.createBuffer({size:x.byteLength,usage:GPUBufferUsage.VERTEX|GPUBufferUsage.COPY_DST,mappedAtCreation:!0});new Float32Array(h.getMappedRange()).set(x),h.unmap();const u=e.createBuffer({size:v.byteLength,usage:GPUBufferUsage.VERTEX|GPUBufferUsage.COPY_DST,mappedAtCreation:!0});new Float32Array(u.getMappedRange()).set(v),u.unmap();const w=e.createBuffer({size:_.byteLength,usage:GPUBufferUsage.INDEX|GPUBufferUsage.COPY_DST,mappedAtCreation:!0});new Uint32Array(w.getMappedRange()).set(_),w.unmap();const r=e.createRenderPipeline({vertex:{module:e.createShaderModule({code:c.vertex}),entryPoint:"main",buffers:[{arrayStride:4*3,attributes:[{shaderLocation:0,format:"float32x3",offset:0}]},{arrayStride:4*2,attributes:[{shaderLocation:1,format:"float32x2",offset:0}]}]},fragment:{module:e.createShaderModule({code:c.fragment}),entryPoint:"main",targets:[{format:b}]},primitive:{topology:"triangle-list",frontFace:"ccw",cullMode:"back"},depthStencil:{format:"depth24plus",depthWriteEnabled:!0,depthCompare:"less"}}),n=e.createBuffer({size:64+64+64,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST});let P=new Image;P.src="https://hungking.cc/assets/models/webgpu_base_part11/frog_diff.jpg ",P.crossOrigin=!0,await P.decode();const y=await createImageBitmap(P),k=e.createSampler({minFilter:"linear",magFilter:"linear",addressModeU:"repeat",addressModeV:"repeat"}),C=e.createTexture({size:[y.width,y.height,1],format:"rgba8unorm",usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST|GPUTextureUsage.RENDER_ATTACHMENT});e.queue.copyExternalImageToTexture({source:y},{texture:C},[y.width,y.height]);const H=e.createBindGroup({layout:r.getBindGroupLayout(0),entries:[{binding:0,resource:{buffer:n,offset:0,size:64+64+64}},{binding:1,resource:k},{binding:2,resource:C.createView()}]});let M=m.getCurrentTexture().createView(),W=e.createTexture({size:[a.clientWidth*g,a.clientHeight*g,1],format:"depth24plus",usage:GPUTextureUsage.RENDER_ATTACHMENT});const F={colorAttachments:[{view:M,clearValue:{r:.5,g:.5,b:.5,a:1},loadOp:"load",storeOp:"store"}],depthStencilAttachment:{view:W.createView(),depthLoadValue:1,depthLoadOp:"clear",depthClearValue:1,depthStoreOp:"store"}};e.queue.writeBuffer(n,0,f),e.queue.writeBuffer(n,64,t),e.queue.writeBuffer(n,64+64,i);async function G(s){Z(i,i,p),$(i,i,B),e.queue.writeBuffer(n,64+64,i);const U=e.createCommandEncoder();M=m.getCurrentTexture().createView(),F.colorAttachments[0].view=M;const l=U.beginRenderPass(F);l.setPipeline(r),l.setVertexBuffer(0,h),l.setVertexBuffer(1,u),l.setIndexBuffer(w,"uint32"),l.setBindGroup(0,H),l.drawIndexed(_.length),l.end(),e.queue.submit([U.finish()]),requestAnimationFrame(G)}G(),document.getElementById("progress").innerText="",a.onwheel=s=>{s.deltaY/100};var R=!1;a.onmousedown=s=>{s.button===0&&(R=!0,A=s.pageX,D=s.pageY)},a.onmouseup=s=>{R=!1};var A=-1,D=-1;a.onmousemove=s=>{if(!!R){var U=s.pageX,l=s.pageY;if(A>0&&D>0){const j=U-A;B=(l-D)/100,p=j/100,console.log(B,p,L)}A=U,D=l}},window.oncontextmenu=s=>{s.preventDefault()}}Y()};var V="/Users/indeex/Documents/program/indeex/program/webGPU/wgsl-base/src/component/part11/index.tsx";const le=()=>{O.exports.useState(),O.exports.useEffect(()=>{a()},[]);const a=async(B=1)=>{const p=document.getElementById("gfx");p.width=document.body.clientWidth,p.height=document.body.clientHeight,ne(p)};return I.createElement("div",{className:S.part,__self:globalThis,__source:{fileName:V,lineNumber:179,columnNumber:10}},I.createElement("canvas",{id:"gfx",__self:globalThis,__source:{fileName:V,lineNumber:180,columnNumber:5}}),I.createElement("div",{id:"progress",className:S.progress,__self:globalThis,__source:{fileName:V,lineNumber:181,columnNumber:5}}))};export{le as default};
